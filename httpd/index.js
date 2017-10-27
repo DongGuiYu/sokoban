@@ -2,6 +2,7 @@
 
 let http = require('http');
 
+<<<<<<< HEAD
 http.createServer((request, response) => {
   //取得 node.js 的 fs 模組
   let fs=require('fs')
@@ -15,6 +16,21 @@ http.createServer((request, response) => {
 
     response.end();
   });
+=======
+ http.createServer((request, response) => {
+   // 取得 node.js 的 fs 模組
+   let fs = require('fs')
+
+   fs.readFile('../htdocs/index.html', (err, data) => {
+     response.writeHead(200, {
+       'Content-Type': 'text/plain'
+     });
+
+     response.write(data);
+
+   response.end();
+ });
+>>>>>>> e66d3caf519ef6a06f34ac21838deb52381733ab
 }).listen(8088);
 
 // log message to Console
