@@ -8,7 +8,7 @@
 
  // 利⽤ 'data' event 消耗掉 data chunk;
  // 'end' event 才會被 fired
- request.on('data', (chunk) => {
+ request.on('data', (chunk) =>
  postData += chunk;
 
  console.log(
