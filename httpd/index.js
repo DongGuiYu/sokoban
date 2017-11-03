@@ -1,37 +1,23 @@
-'use strict';
+ 'use strict';
 
-let http = require('http');
+ let http = require('http');
 
-<<<<<<< HEAD
-http.createServer((request, response) => {
-  //取得 node.js 的 fs 模組
-  let fs=require('fs')
-
-  fs.readFile('../htdocs/index.html', (err, data) => {
-    response.writeHead(200, {
-      'Content-Type': 'text/html'
-    });
-
-    response.write(data);
-
-    response.end();
-  });
-=======
  http.createServer((request, response) => {
-   // 取得 node.js 的 fs 模組
-   let fs = require('fs')
-
-   fs.readFile('../htdocs/index.html', (err, data) => {
-     response.writeHead(200, {
-       'Content-Type': 'text/plain'
-     });
-
-     response.write(data);
-
-   response.end();
+ request.on('end', () => {
+ console.log('Request method: ' + request.method);
+ console.log('Request url: ' + request.url);
  });
->>>>>>> e66d3caf519ef6a06f34ac21838deb52381733ab
-}).listen(8088);
 
-// log message to Console
-console.log(' 伺服器啓動，連線 url: http://127.0.0.1:8088/');
+ // 傳送 HTTP header
+ // HTTP Status: 200 : OK
+ // Content Type: text/plain
+ response.writeHead(200, {
+ 'Content-Type': 'text/plain'
+ });
+
+ // 傳送回應內容。
+ response.end('Hello World!\n');
+ }).listen(8088);
+
+ // log message to Console
+ console.log('Server running at http://127.0.0.1:8088/');
